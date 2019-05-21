@@ -45,6 +45,16 @@ private:
 	// Setup (assumed) attached input component
 	void SetupInputComponent();
 
+	// 
+	FVector PlayerViewPointLocation;
+	FRotator PlayerViewPointRotation;
+
+	// Return current start of reach line
+	FVector GetReachLineStart();
+
+	// Return current end of reach line
+	FVector GetReachLineEnd();
+
 	// Return hit for first physics body in reach
 	const FHitResult GetFirstPhysicsBodyInReach();
 

@@ -3,6 +3,7 @@
 #include "Grabber.h"
 #include "Engine/World.h"
 #include "Classes/Components/PrimitiveComponent.h"
+#include "Components/DirectionalLightComponent.h"
 #include "DrawDebugHelpers.h"
 #define OUT
 

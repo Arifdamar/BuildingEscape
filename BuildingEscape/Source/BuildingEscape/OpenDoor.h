@@ -36,6 +36,7 @@ private:
 	UPROPERTY(EditAnywhere)
 	ATriggerVolume* PressurePlate;
 
+
 	UPROPERTY(EditAnywhere)
 	float DoorCloseDelay = 0.5f;
 
@@ -43,6 +44,8 @@ private:
 
 	AActor* Owner;
 	FRotator ActorRotation;
-	AActor* ActorThatOpens;
+
+	// Returns total mass in kg
+	float GetTotalMassOfActorsOnPlate();
 	
 };

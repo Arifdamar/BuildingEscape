@@ -36,48 +36,22 @@ void UOpenDoor::BeginPlay()
 	}
 }
 
-
-void UOpenDoor::OpenDoor()
-{
-	// Set the rotation value
-	ActorRotation.Yaw += 90;
-
-	// Set the door rotation
-	Owner->SetActorRotation(ActorRotation);
-	IsDoorOpen = true;
-}
-
-
-void UOpenDoor::CloseDoor()
-{
-	// Set the rotation value
-	ActorRotation.Yaw -= 90;
-
-	// Set the door rotation
-	Owner->SetActorRotation(ActorRotation);
-	IsDoorOpen = false;
-}
-
-
 // Called every frame
 void UOpenDoor::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
 	// Poll the Trigger Volume
-	if (GetTotalMassOfActorsOnPlate() > 50.0f)
+	if (GetTotalMassOfActorsOnPlate() > TriggerMass)
 	{
-		if (!IsDoorOpen)
-		{
-			// When the ActorThatOpens is in the volume and the door is close
-			OpenDoor();
-		}
-		LastDoorOpenTime = GetWorld()->GetTimeSeconds();
+		// TotalMass is grater than TriggerMass
+		OnOpen.Broadcast();
+
 	}
-	else if (IsDoorOpen && GetWorld()->GetTimeSeconds() - LastDoorOpenTime > DoorCloseDelay)
+	else
 	{
-		// When the ActorThatOpens is NOT in the volume and the door is open
-		CloseDoor();
+		// TotalMass is lower than TriggerMass
+		OnClose.Broadcast();
 	}
 }
 

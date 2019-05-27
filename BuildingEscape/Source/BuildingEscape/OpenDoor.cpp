@@ -46,7 +46,6 @@ void UOpenDoor::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompon
 	{
 		// TotalMass is grater than TriggerMass
 		OnOpen.Broadcast();
-
 	}
 	else
 	{
@@ -66,7 +65,7 @@ float UOpenDoor::GetTotalMassOfActorsOnPlate()
 	for (const auto* Actor : OverlappingActors)
 	{
 		TotalMass += Actor->FindComponentByClass<UPrimitiveComponent>()->GetMass();
-		UE_LOG(LogTemp, Warning, TEXT("It's : %s"), *Actor->GetName())
+		//UE_LOG(LogTemp, Warning, TEXT("It's : %s"), *Actor->GetName())
 	}
 
 	return TotalMass;

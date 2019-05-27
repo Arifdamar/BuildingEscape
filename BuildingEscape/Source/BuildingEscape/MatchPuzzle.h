@@ -37,22 +37,16 @@ public:
 		FMatchPuzzleEvent YellowMatch;
 
 	UPROPERTY(BlueprintAssignable)
-		FMatchPuzzleEvent AllMatch;
+		FMatchPuzzleEvent UnMatch;
 
 private:
 	UPROPERTY(EditAnywhere)
-		ATriggerVolume* PressurePlateRed = nullptr;
-
-	UPROPERTY(EditAnywhere)
-		ATriggerVolume* PressurePlateGreen = nullptr;
-
-	UPROPERTY(EditAnywhere)
-		ATriggerVolume* PressurePlateYellow = nullptr;
+		ATriggerVolume* PressurePlate = nullptr;
 	
 	UPROPERTY(EditAnywhere)
-		AActor* ActorThatOpens;
+		AActor* ActorThatMatches;
 
-	AActor* Owner = nullptr;
+	AActor* Owner;
 
 	bool RedMatched = false, GreenMatched = false, YellowMatched = false;
 };

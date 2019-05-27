@@ -45,7 +45,7 @@ private:
 	// Setup (assumed) attached input component
 	void SetupInputComponent();
 
-	// 
+	
 	FVector PlayerViewPointLocation;
 	FRotator PlayerViewPointRotation;
 
